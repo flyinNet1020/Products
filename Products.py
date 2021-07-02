@@ -1,12 +1,19 @@
-# 讀取檔案
+import os
+
 products = []
-with open('products.csv', 'r', encoding = 'utf-8') as f: # 寫入/讀取檔案都會有編碼的問題，要特別注意
-	for line in f:
-		if '商品,價格' in line:
-			continue # 不處理後面再繼續一次迴圈;break會直接跳出當下迴圈
-		name, price = line.strip().split(',') # 把換行符號(\n)去除後，遇到逗點就分割，而split處理後，資料會變成清單
-		products.append([name, price])
-print(products)
+if os.path.isfile('products.csv'): # 檢查檔案是否存在，檔案在才繼續讀取
+	print('此檔案存在...')
+# 讀取檔案
+	with open('products.csv', 'r', encoding = 'utf-8') as f: # 寫入/讀取檔案都會有編碼的問題，要特別注意
+		for line in f:
+			if '商品,價格' in line:
+				continue # 不處理後面再繼續一次迴圈;break會直接跳出當下迴圈
+			name, price = line.strip().split(',') # 把換行符號(\n)去除後，遇到逗點就分割，而split處理後，資料會變成清單
+			products.append([name, price])
+
+	print(products)
+else:
+	print('檔案不存在...')
 
 # 讓使用者輸入
 while True: # for偏向已知的次數，while為未知會使用幾次
