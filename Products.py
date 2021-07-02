@@ -20,10 +20,10 @@ print(products)
 
 # 印出所有購買紀錄
 for p in products:
-	print(p[0], '的價格是', p[0])
+	print(p[0], '的價格是', p[1])
 
 # 寫入檔案
 with open('products.csv', 'w', encoding = 'utf-8') as f: # with的做用是讓程式離開with後，檔案自動關閉。
-	f.write('商品,價格\n') # 若不加入14行的encoding = 'utf-8'編碼會出問題
+	f.write('商品,價格\n') # 若不加入26行的encoding = 'utf-8'編碼會出問題
 	for p in products:
 		f.write(p[0] + ',' + str(p[1]) + '\n') # 4個字串的相加。避免在同一儲存格，故用逗點做區隔。
